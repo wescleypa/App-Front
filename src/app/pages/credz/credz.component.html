@@ -1,0 +1,150 @@
+<app-header></app-header>
+
+<div id="appCapsule" *ngIf="registered">
+
+    <!-- Wallet Card -->
+    <div class="section wallet-card-section pt-1">
+        <div class="wallet-card">
+            <!-- Balance -->
+            <div class="balance">
+                <div class="left">
+                    <span class="title">Limite à vista</span>
+                    <h1 class="total" [hidden]="!balance || balance === null">  
+                        {{ balance && balance !== null ? balance?.avista : 'R$ 0,00' }}
+                    </h1>
+                    <img [hidden]= "balance && balance !== null"
+                          src    = "https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+                          class  = "col-4"
+                    >
+                </div>
+                <div class="right">
+                    <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#depositActionSheet">
+                        <ion-icon name="add-outline"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            <!-- * Balance -->
+        </div>
+    </div>
+    <!-- Wallet Card -->
+
+
+    <!-- Stats -->
+    <div class="section">
+        <div class="row mt-2">
+            <div class="col-6">
+                <div class="stat-box">
+                    <div class="title">Limite Parcelado</div>
+                    <div class="value text-success" [hidden]="!balance || balance === null">
+                        {{ balance && balance !== null ? balance?.parcelado : 'R$ 0,00' }}
+                    </div>
+                    <img [hidden]= "balance && balance !== null"
+                          src    = "https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+                          class  = "col-1"
+                    >
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="stat-box">
+                    <div class="title">Limite na Loja</div>
+                    <div class="value text-danger" [hidden]="!balance || balance === null">
+                        {{ balance && balance !== null ? balance?.turbinado : 'R$ 0,00' }}
+                    </div>
+                    <img [hidden]= "balance && balance !== null"
+                          src    = "https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+                          class  = "col-1"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Stats -->
+    <div class="mt-4" [style.background]="'white'">
+        <select class="form-select">
+            <option selected>Selecione um cartão</option>
+            <option *ngIf="!cards || cards === null" class="text-secondary">
+                Carregando lista de cartões, aguarde...
+            </option>
+            <option *ngFor="let card of cards; let i=index;">
+                {{ card }}
+            </option>
+        </select>
+    </div>
+    <!-- Transactions -->
+    <div class="section mt-4">
+        <div class="section-heading">
+            <h2 class="title">Transactions</h2>
+            <a href="app-transactions.html" class="link">View All</a>
+        </div>
+        <div class="transactions">
+            <!-- item -->
+            <a href="app-transaction-detail.html" class="item">
+                <div class="detail">
+                    <img src="assets/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
+                    <div>
+                        <strong>Amazon</strong>
+                        <p>Shopping</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="price text-danger"> - $ 150</div>
+                </div>
+            </a>
+            <!-- * item -->
+            <!-- item -->
+            <a href="app-transaction-detail.html" class="item">
+                <div class="detail">
+                    <img src="assets/img/sample/brand/2.jpg" alt="img" class="image-block imaged w48">
+                    <div>
+                        <strong>Apple</strong>
+                        <p>Appstore Purchase</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="price text-danger">- $ 29</div>
+                </div>
+            </a>
+            <!-- * item -->
+            <!-- item -->
+            <a href="app-transaction-detail.html" class="item">
+                <div class="detail">
+                    <img src="assets/img/sample/avatar/avatar3.jpg" alt="img" class="image-block imaged w48">
+                    <div>
+                        <strong>Alex Ljung</strong>
+                        <p>Transfer</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="price">+ $ 1,000</div>
+                </div>
+            </a>
+            <!-- * item -->
+            <!-- item -->
+            <a href="app-transaction-detail.html" class="item">
+                <div class="detail">
+                    <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="image-block imaged w48">
+                    <div>
+                        <strong>Beatriz Brito</strong>
+                        <p>Transfer</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="price text-danger">- $ 186</div>
+                </div>
+            </a>
+            <!-- * item -->
+        </div>
+    </div>
+    <!-- * Transactions -->
+
+
+    <!-- app footer -->
+    <div class="appFooter mt-3">
+        <div class="footer-title">
+            Copyright © Finapp 2021. All Rights Reserved.
+        </div>
+        Bootstrap 5 based mobile template.
+    </div>
+    <!-- * app footer -->
+
+</div>
