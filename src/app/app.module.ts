@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 //import { LoaderComponent } from './components/loader/loader.component';
 import { IonicModule     } from '@ionic/angular';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 //import { MercadopagoComponent } from './pages/mercadopago/mercadopago.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -29,7 +30,7 @@ import { CredzComponent } from './pages/credz/credz.component';
     IonicModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
